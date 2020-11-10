@@ -13,8 +13,8 @@ public class TranslationControler : MonoBehaviour
 
 	public void TranslateFixedDelta() => this.Translate(Time.fixedDeltaTime);
 
-	public void Translate(float value)
+	public void Translate(float scale)
 	{
-		this.target.transform.Translate(this.vector * value);
+		this.target.transform.Translate(this.vector * scale);
 	}
 }
