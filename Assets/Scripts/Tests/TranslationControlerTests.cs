@@ -87,5 +87,43 @@ namespace Tests
 				translationCtrl.target.transform.position
 			);
 		}
+
+		[UnityTest]
+		public IEnumerator TranslateTimeDelta()
+		{
+			var delta = Time.deltaTime;
+			var translationCtrl = new GameObject("obj")
+				.AddComponent<TranslationControler>();
+			translationCtrl.target = new GameObject("target");
+			translationCtrl.vector = Vector3.forward;
+
+			translationCtrl.TranslateDelta();
+
+			Assert.AreEqual(
+				Vector3.forward * delta,
+				translationCtrl.target.transform.position
+			);
+
+			yield break;
+		}
+
+		[UnityTest]
+		public IEnumerator TranslateTimeFixedDelta()
+		{
+			var delta = Time.fixedDeltaTime;
+			var translationCtrl = new GameObject("obj")
+				.AddComponent<TranslationControler>();
+			translationCtrl.target = new GameObject("target");
+			translationCtrl.vector = Vector3.forward;
+
+			translationCtrl.TranslateFixedDelta();
+
+			Assert.AreEqual(
+				Vector3.forward * delta,
+				translationCtrl.target.transform.position
+			);
+
+			yield break;
+		}
 	}
 }
