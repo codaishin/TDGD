@@ -21,7 +21,7 @@ namespace Tests
 
 			yield return new WaitForEndOfFrame();
 
-			Assert.AreEqual(
+			TestTools.AssertAreEqual(
 				new Vector3(1, 2, 3),
 				camCtrl.transform.position - target.transform.position
 			);
@@ -45,7 +45,7 @@ namespace Tests
 			);
 			var actual = camCtrl.transform.rotation;
 
-			Assert.AreEqual(expected.eulerAngles, actual.eulerAngles);
+			TestTools.AssertAreEqual(expected.eulerAngles, actual.eulerAngles);
 		}
 	}
 }
