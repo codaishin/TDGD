@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-	public class TranslationControlerTests
+	public class TranslationControlerTests : TestTools.BaseTestClass
 	{
 		[Test]
 		public void Translate()

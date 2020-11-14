@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-	public class CameraControlerTests
+	public class CameraControlerTests : TestTools.BaseTestClass
 	{
 		[UnityTest]
 		public IEnumerator OffsetVector()
