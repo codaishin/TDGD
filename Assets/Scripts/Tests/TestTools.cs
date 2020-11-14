@@ -14,24 +14,25 @@ public class TestTools : MonoBehaviour
 		}
 	}
 
-	public static void AssertAreEqual(in Vector3 a, in Vector3 b)
+	public static void AssertAreEqual(in Vector3 expected, in Vector3 actual)
 	{
-		if (a != b) {
+		if (expected != actual) {
 			throw new AssertionException(
-				$"Expected: ({a.x:F10}, {a.y:F10}, {a.z:F10})\n" +
-				$" But was: ({b.x:F10}, {b.y:F10}, {b.z:F10})"
+				$"Expected: ({expected.x:F10}, {expected.y:F10}, {expected.z:F10})\n" +
+				$" But was: ({actual.x:F10}, {actual.y:F10}, {actual.z:F10})"
 			);
 		}
 	}
 
-	public static void AssertAreEqual(in Vector3 a, in Vector3 b, in float delta)
+	public static
+	void AssertAreEqual(in Vector3 expected, in Vector3 actual, in float delta)
 	{
-		if (Mathf.Abs(a.x - b.x) > delta ||
-		    Mathf.Abs(a.y - b.y) > delta ||
-		    Mathf.Abs(a.z - b.z) > delta) {
+		if (Mathf.Abs(expected.x - actual.x) > delta ||
+		    Mathf.Abs(expected.y - actual.y) > delta ||
+		    Mathf.Abs(expected.z - actual.z) > delta) {
 			throw new AssertionException(
-				$"Expected: ({a.x:F10}, {a.y:F10}, {a.z:F10})\n" +
-				$" But was: ({b.x:F10}, {b.y:F10}, {b.z:F10})\n" +
+				$"Expected: ({expected.x:F10}, {expected.y:F10}, {expected.z:F10})\n" +
+				$" But was: ({actual.x:F10}, {actual.y:F10}, {actual.z:F10})\n" +
 				$"Allowed delta: {delta:F10}"
 			);
 		}
