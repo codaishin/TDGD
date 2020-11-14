@@ -27,7 +27,7 @@ namespace Tests
 		}
 
 		[Test]
-		public void AssertAreEqualVectorsIdenditcal()
+		public void AssertAreEqualVectorsIdentical()
 		{
 			TestTools.AssertAreEqual(Vector3.zero, Vector3.zero);
 		}
@@ -44,13 +44,15 @@ namespace Tests
 			try {
 				TestTools.AssertAreEqual(Vector3.zero, Vector3.one);
 			} catch (AssertionException e) {
-				string message = "Expected: ({0:F10}, {0:F10}, {0:F10})\n But was: ({1:F10}, {1:F10}, {1:F10})";
+				string message =
+					"Expected: ({0:F10}, {0:F10}, {0:F10})\n" +
+					" But was: ({1:F10}, {1:F10}, {1:F10})";
 				Assert.AreEqual(string.Format(message, 0f, 1f), e.Message);
 			}
 		}
 
 		[Test]
-		public void AssertAreEqualDeltaThrows()
+		public void AssertAreEqualVectorsDeltaThrows()
 		{
 			Assert.Throws<AssertionException>(
 				() => TestTools.AssertAreEqual(Vector3.zero, Vector3.one, 0.5f)
@@ -58,24 +60,27 @@ namespace Tests
 		}
 
 		[Test]
-		public void AssertAreEqualDeltaVectorsIdenditcal()
+		public void AssertAreEqualVectorsDeltaIdenditcal()
 		{
 			TestTools.AssertAreEqual(Vector3.zero, Vector3.zero, 0.5f);
 		}
 
 		[Test]
-		public void AssertAreEqualDeltaVectorsEssentiallEqual()
+		public void AssertAreEqualVectorsDeltaEssentiallEqual()
 		{
 			TestTools.AssertAreEqual(Vector3.zero, new Vector3(0.5f, 0, 0), 0.5f);
 		}
 
 		[Test]
-		public void AssertAreEqualDeltaVectorsThrowsMessage()
+		public void AssertAreEqualVectorsDeltaThrowsMessage()
 		{
 			try {
 				TestTools.AssertAreEqual(Vector3.zero, Vector3.one, 0.3f);
 			} catch (AssertionException e) {
-				string message = "Expected: ({0:F10}, {0:F10}, {0:F10})\n But was: ({1:F10}, {1:F10}, {1:F10})\nAllowed delta: {2:F10}";
+				string message =
+					"Expected: ({0:F10}, {0:F10}, {0:F10})\n" +
+					" But was: ({1:F10}, {1:F10}, {1:F10})\n" +
+					"Allowed delta: {2:F10}";
 				Assert.AreEqual(string.Format(message, 0f, 1f, 0.3f), e.Message);
 			}
 		}
