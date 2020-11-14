@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-	public class TranslationControlerTests
+	public class TranslationControlerTests : TestTools.BaseTestClass
 	{
 		[Test]
 		public void Translate()
@@ -18,7 +18,7 @@ namespace Tests
 
 			translationCtrl.Translate();
 
-			Assert.AreEqual(
+			TestTools.AssertAreEqual(
 				new Vector3(0, 1, 0),
 				translationCtrl.target.transform.position
 			);
@@ -35,7 +35,7 @@ namespace Tests
 
 			translationCtrl.Translate();
 
-			Assert.AreEqual(
+			TestTools.AssertAreEqual(
 				new Vector3(1, 3, 3),
 				translationCtrl.target.transform.position
 			);
@@ -51,7 +51,7 @@ namespace Tests
 
 			translationCtrl.Translate();
 
-			Assert.AreEqual(
+			TestTools.AssertAreEqual(
 				Vector3.forward,
 				translationCtrl.target.transform.position
 			);
@@ -69,7 +69,10 @@ namespace Tests
 
 			translationCtrl.Translate();
 
-			Assert.True(Vector3.up == translationCtrl.target.transform.position);
+			TestTools.AssertAreEqual(
+				Vector3.up,
+				translationCtrl.target.transform.position
+			);
 		}
 
 		[Test]
@@ -82,7 +85,7 @@ namespace Tests
 
 			translationCtrl.Translate(0.5f);
 
-			Assert.AreEqual(
+			TestTools.AssertAreEqual(
 				Vector3.forward / 2,
 				translationCtrl.target.transform.position
 			);
@@ -99,7 +102,7 @@ namespace Tests
 
 			translationCtrl.TranslateDelta();
 
-			Assert.AreEqual(
+			TestTools.AssertAreEqual(
 				Vector3.forward * delta,
 				translationCtrl.target.transform.position
 			);
@@ -118,7 +121,7 @@ namespace Tests
 
 			translationCtrl.TranslateFixedDelta();
 
-			Assert.AreEqual(
+			TestTools.AssertAreEqual(
 				Vector3.forward * delta,
 				translationCtrl.target.transform.position
 			);
