@@ -1,7 +1,9 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
 using UnityEngine;
 
-public class TestTools : MonoBehaviour
+public static class TestTools
 {
 	public abstract class BaseTestClass
 	{
@@ -25,16 +27,23 @@ public class TestTools : MonoBehaviour
 	}
 
 	public static
-	void AssertAreEqual(in Vector3 expected, in Vector3 actual, in float delta)
+	void AssertAreEqual(in Vector3 expected, in Vector3 actual, float delta)
 	{
-		if (Mathf.Abs(expected.x - actual.x) > delta ||
-		    Mathf.Abs(expected.y - actual.y) > delta ||
-		    Mathf.Abs(expected.z - actual.z) > delta) {
+		bool greaterThanDelta(float dimension) => Mathf.Abs(dimension) > delta;
+
+		if (TestTools.DimensionsOf(expected - actual).Any(greaterThanDelta)) {
 			throw new AssertionException(
 				$"Expected: ({expected.x:F10}, {expected.y:F10}, {expected.z:F10})\n" +
 				$" But was: ({actual.x:F10}, {actual.y:F10}, {actual.z:F10})\n" +
 				$"Allowed delta: {delta:F10}"
 			);
 		}
+	}
+
+	private static IEnumerable<float> DimensionsOf(Vector3 vector)
+	{
+		yield return vector.x;
+		yield return vector.y;
+		yield return vector.z;
 	}
 }
