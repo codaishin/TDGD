@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.TestTools;
 
 namespace Tests
@@ -36,7 +35,6 @@ namespace Tests
 			getKeyControler.down.Add(KeyCode.A);
 			inputCtrl.getKeyControler = getKeyControler;
 			inputCtrl.key = KeyCode.A;
-			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
 
 			inputCtrl.Apply();
@@ -53,7 +51,6 @@ namespace Tests
 
 			inputCtrl.getKeyControler = getKeyControler;
 			inputCtrl.key = KeyCode.A;
-			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
 
 			inputCtrl.Apply();
@@ -71,7 +68,6 @@ namespace Tests
 			getKeyControler.hold.Add(KeyCode.A);
 			inputCtrl.getKeyControler = getKeyControler;
 			inputCtrl.key = KeyCode.A;
-			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
 			inputCtrl.option = GetKeyControler.Option.Hold;
 
@@ -89,7 +85,6 @@ namespace Tests
 
 			inputCtrl.getKeyControler = getKeyControler;
 			inputCtrl.key = KeyCode.A;
-			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
 			inputCtrl.option = GetKeyControler.Option.Hold;
 
@@ -108,7 +103,6 @@ namespace Tests
 			getKeyControler.up.Add(KeyCode.A);
 			inputCtrl.getKeyControler = getKeyControler;
 			inputCtrl.key = KeyCode.A;
-			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
 			inputCtrl.option = GetKeyControler.Option.Up;
 
@@ -126,7 +120,6 @@ namespace Tests
 
 			inputCtrl.getKeyControler = getKeyControler;
 			inputCtrl.key = KeyCode.A;
-			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
 			inputCtrl.option = GetKeyControler.Option.Up;
 
