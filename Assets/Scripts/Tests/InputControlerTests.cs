@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.TestTools;
 
 namespace Tests
@@ -23,6 +24,41 @@ namespace Tests
 
 			public override
 			bool GetKeyUp(in KeyCode keyCode) => this.end.Contains(keyCode);
+		}
+
+		[Test]
+		public void PressACalled()
+		{
+			var called = 0;
+			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
+			var inputCtrl = new GameObject("input").AddComponent<InputControler>();
+
+			getKeyControler.begin.Add(KeyCode.A);
+			inputCtrl.getKeyControler = getKeyControler;
+			inputCtrl.key = KeyCode.A;
+			inputCtrl.onKey = new UnityEvent();
+			inputCtrl.onKey.AddListener(() => ++called);
+
+			inputCtrl.Apply();
+
+			Assert.AreEqual(1, called);
+		}
+
+		[Test]
+		public void PressANotCalled()
+		{
+			var called = 0;
+			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
+			var inputCtrl = new GameObject("input").AddComponent<InputControler>();
+
+			inputCtrl.getKeyControler = getKeyControler;
+			inputCtrl.key = KeyCode.A;
+			inputCtrl.onKey = new UnityEvent();
+			inputCtrl.onKey.AddListener(() => ++called);
+
+			inputCtrl.Apply();
+
+			Assert.AreEqual(0, called);
 		}
 	}
 }
