@@ -10,37 +10,86 @@ namespace Tests
 	{
 		private class GetKeyMock : GetKeyControler
 		{
-			public bool[] returns = new bool[3];
-			public override bool GetKeyDown(in KeyCode keyCode) => this.returns[0];
-			public override bool GetKeyHold(in KeyCode keyCode) => this.returns[1];
-			public override bool GetKeyUp(in KeyCode keyCode) => this.returns[2];
+			public GetKeyControler.Option wasCalled = (GetKeyControler.Option)(-1);
+			public bool[] returnCodes = new bool[3];
+
+			public override bool GetKeyDown(in KeyCode keyCode)
+			{
+				this.wasCalled = GetKeyControler.Option.Down;
+				return this.returnCodes[(int)this.wasCalled];
+			}
+
+			public override bool GetKeyHold(in KeyCode keyCode)
+			{
+				this.wasCalled = GetKeyControler.Option.Hold;
+				return this.returnCodes[(int)this.wasCalled];
+			}
+
+			public override bool GetKeyUp(in KeyCode keyCode)
+			{
+				this.wasCalled = GetKeyControler.Option.Up;
+				return this.returnCodes[(int)this.wasCalled];
+			}
 		}
 
 		[Test]
-		public void AccessDown()
+		public void OptionDown()
 		{
+			var option = GetKeyControler.Option.Down;
 			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
-			getKeyControler.returns[0] = true;
+			getKeyControler.GetKey(option, KeyCode.B);
 
-			Assert.True(getKeyControler.GetKey(GetKeyControler.Option.Down, KeyCode.B));
+			Assert.AreEqual(option, getKeyControler.wasCalled);
 		}
 
 		[Test]
-		public void AccessHold()
+		public void OptionDownReturnCode()
 		{
+			var option = GetKeyControler.Option.Down;
 			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
-			getKeyControler.returns[1] = true;
+			getKeyControler.returnCodes[(int)option] = true;
 
-			Assert.True(getKeyControler.GetKey(GetKeyControler.Option.Hold, KeyCode.B));
+			Assert.True(getKeyControler.GetKey(option, KeyCode.B));
 		}
 
 		[Test]
-		public void AccessUp()
+		public void OptionHold()
 		{
+			var option = GetKeyControler.Option.Hold;
 			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
-			getKeyControler.returns[2] = true;
+			getKeyControler.GetKey(option, KeyCode.B);
 
-			Assert.True(getKeyControler.GetKey(GetKeyControler.Option.Up, KeyCode.B));
+			Assert.AreEqual(option, getKeyControler.wasCalled);
+		}
+
+		[Test]
+		public void OptionHoldReturnCode()
+		{
+			var option = GetKeyControler.Option.Hold;
+			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
+			getKeyControler.returnCodes[(int)option] = true;
+
+			Assert.True(getKeyControler.GetKey(option, KeyCode.B));
+		}
+
+		[Test]
+		public void OptionUp()
+		{
+			var option = GetKeyControler.Option.Up;
+			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
+			getKeyControler.GetKey(option, KeyCode.B);
+
+			Assert.AreEqual(option, getKeyControler.wasCalled);
+		}
+
+		[Test]
+		public void OptionUpReturnCode()
+		{
+			var option = GetKeyControler.Option.Up;
+			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
+			getKeyControler.returnCodes[(int)option] = true;
+
+			Assert.True(getKeyControler.GetKey(option, KeyCode.B));
 		}
 	}
 }
