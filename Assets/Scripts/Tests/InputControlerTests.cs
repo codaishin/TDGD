@@ -20,7 +20,7 @@ namespace Tests
 			bool GetKeyDown(in KeyCode keyCode) => this.begin.Contains(keyCode);
 
 			public override
-			bool GetKey(in KeyCode keyCode) => this.stay.Contains(keyCode);
+			bool GetKeyHold(in KeyCode keyCode) => this.stay.Contains(keyCode);
 
 			public override
 			bool GetKeyUp(in KeyCode keyCode) => this.end.Contains(keyCode);
@@ -73,7 +73,7 @@ namespace Tests
 			inputCtrl.key = KeyCode.A;
 			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
-			inputCtrl.option = InputControler.Option.Hold;
+			inputCtrl.option = GetKeyControler.Option.Hold;
 
 			inputCtrl.Apply();
 
@@ -91,7 +91,7 @@ namespace Tests
 			inputCtrl.key = KeyCode.A;
 			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
-			inputCtrl.option = InputControler.Option.Hold;
+			inputCtrl.option = GetKeyControler.Option.Hold;
 
 			inputCtrl.Apply();
 
@@ -110,7 +110,7 @@ namespace Tests
 			inputCtrl.key = KeyCode.A;
 			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
-			inputCtrl.option = InputControler.Option.Up;
+			inputCtrl.option = GetKeyControler.Option.Up;
 
 			inputCtrl.Apply();
 
@@ -128,7 +128,7 @@ namespace Tests
 			inputCtrl.key = KeyCode.A;
 			inputCtrl.onKey = new UnityEvent();
 			inputCtrl.onKey.AddListener(() => ++called);
-			inputCtrl.option = InputControler.Option.Up;
+			inputCtrl.option = GetKeyControler.Option.Up;
 
 			inputCtrl.Apply();
 
