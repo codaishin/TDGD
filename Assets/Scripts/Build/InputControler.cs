@@ -7,8 +7,8 @@ public class InputControler : MonoBehaviour
 {
 	public GetKeyControler getKeyControler;
 	public KeyCode key;
-	public UnityEvent onKey;
 	public GetKeyControler.Option option;
+	public UnityEvent onKey;
 
 	public void Apply()
 	{
