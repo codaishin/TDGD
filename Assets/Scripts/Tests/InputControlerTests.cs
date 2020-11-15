@@ -12,18 +12,18 @@ namespace Tests
 	{
 		private class GetKeyMock : GetKeyControler
 		{
-			public List<KeyCode> begin = new List<KeyCode>();
-			public List<KeyCode> stay = new List<KeyCode>();
-			public List<KeyCode> end = new List<KeyCode>();
+			public List<KeyCode> down = new List<KeyCode>();
+			public List<KeyCode> hold = new List<KeyCode>();
+			public List<KeyCode> up = new List<KeyCode>();
 
 			public override
-			bool GetKeyDown(in KeyCode keyCode) => this.begin.Contains(keyCode);
+			bool GetKeyDown(in KeyCode keyCode) => this.down.Contains(keyCode);
 
 			public override
-			bool GetKeyHold(in KeyCode keyCode) => this.stay.Contains(keyCode);
+			bool GetKeyHold(in KeyCode keyCode) => this.hold.Contains(keyCode);
 
 			public override
-			bool GetKeyUp(in KeyCode keyCode) => this.end.Contains(keyCode);
+			bool GetKeyUp(in KeyCode keyCode) => this.up.Contains(keyCode);
 		}
 
 		[Test]
@@ -33,7 +33,7 @@ namespace Tests
 			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
 			var inputCtrl = new GameObject("input").AddComponent<InputControler>();
 
-			getKeyControler.begin.Add(KeyCode.A);
+			getKeyControler.down.Add(KeyCode.A);
 			inputCtrl.getKeyControler = getKeyControler;
 			inputCtrl.key = KeyCode.A;
 			inputCtrl.onKey = new UnityEvent();
@@ -68,7 +68,7 @@ namespace Tests
 			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
 			var inputCtrl = new GameObject("input").AddComponent<InputControler>();
 
-			getKeyControler.stay.Add(KeyCode.A);
+			getKeyControler.hold.Add(KeyCode.A);
 			inputCtrl.getKeyControler = getKeyControler;
 			inputCtrl.key = KeyCode.A;
 			inputCtrl.onKey = new UnityEvent();
@@ -105,7 +105,7 @@ namespace Tests
 			var getKeyControler = new GameObject("getKey").AddComponent<GetKeyMock>();
 			var inputCtrl = new GameObject("input").AddComponent<InputControler>();
 
-			getKeyControler.end.Add(KeyCode.A);
+			getKeyControler.up.Add(KeyCode.A);
 			inputCtrl.getKeyControler = getKeyControler;
 			inputCtrl.key = KeyCode.A;
 			inputCtrl.onKey = new UnityEvent();
