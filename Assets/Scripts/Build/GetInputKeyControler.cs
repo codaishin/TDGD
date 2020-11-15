@@ -4,7 +4,7 @@ public abstract class GetKeyControler : MonoBehaviour
 {
 	public enum Option { Down = default, Hold, Up }
 
-	public delegate bool GetFunc(in KeyCode keyCode);
+	private delegate bool GetFunc(in KeyCode keyCode);
 
 
 	private readonly GetFunc[] keyFuncs;
