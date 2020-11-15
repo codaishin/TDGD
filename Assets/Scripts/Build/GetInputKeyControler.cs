@@ -18,7 +18,7 @@ public abstract class GetKeyControler : MonoBehaviour
 		return this.keyFuncs[(int)option](keyCode);
 	}
 
-	public GetKeyControler()
+	public GetKeyControler() : base()
 	{
 		this.keyFuncs = new GetFunc[] {
 			this.GetKeyDown,
