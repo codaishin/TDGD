@@ -10,7 +10,7 @@ namespace Tests
 	{
 		private class GetKeyMock : GetKeyControler
 		{
-			public GetKeyControler.Option wasCalled;
+			public GetKeyControler.Option wasCalled = (GetKeyControler.Option)(-1);
 			public override bool GetKeyDown(in KeyCode keyCode)
 			{
 				this.wasCalled = GetKeyControler.Option.Down;
