@@ -85,5 +85,22 @@ namespace Tests
 
 			Assert.AreEqual(0, called);
 		}
+
+		[UnityTest]
+		public IEnumerator RemoveOnDestroy()
+		{
+			var eventListenerCtrl = new GameObject("listener")
+				.AddComponent<EventListenerControler>();
+			var eventHandle = ScriptableObject.CreateInstance<EventHandle>();
+			eventListenerCtrl.eventHandle = eventHandle;
+
+			yield return new WaitForEndOfFrame();
+
+			Object.Destroy(eventListenerCtrl.gameObject);
+
+			yield return new WaitForEndOfFrame();
+
+			Assert.DoesNotThrow(() => eventHandle.Raise());
+		}
 	}
 }

@@ -19,4 +19,9 @@ public class EventListenerControler : MonoBehaviour
 			this.onRaise.Invoke();
 		}
 	}
+
+	private void OnDestroy()
+	{
+		this.eventHandle.OnRaise -= this.Raise;
+	}
 }
