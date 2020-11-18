@@ -149,5 +149,27 @@ namespace Tests
 
 			Assert.AreEqual(0, called);
 		}
+
+		[UnityTest]
+		public IEnumerator OnRaiseAddOnlyOnce()
+		{
+			var called = 0;
+			var eventListenerCtrl = new GameObject("listener")
+				.AddComponent<EventListenerControler>();
+			var eventHandle = ScriptableObject.CreateInstance<EventHandle>();
+			eventListenerCtrl.eventHandle = eventHandle;
+			eventListenerCtrl.enabled = false;
+
+			yield return new WaitForEndOfFrame();
+
+			eventListenerCtrl.enabled = true;
+
+			yield return new WaitForEndOfFrame();  // Start() + OnEnable()
+
+			eventListenerCtrl.onRaise.AddListener(() => ++called);
+			eventHandle.Raise();
+
+			Assert.AreEqual(1, called);
+		}
 	}
 }

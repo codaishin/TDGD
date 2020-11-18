@@ -5,25 +5,32 @@ using UnityEngine.Events;
 
 public class EventListenerControler : MonoBehaviour
 {
+	private bool added;
+
 	public EventHandle eventHandle;
 	public UnityEvent onRaise = new UnityEvent();
 
-	private void Start()
-	{
-		this.eventHandle.OnRaise += this.Raise;
-	}
+	private void Start() => this.Add();
 
-	private void OnDisable()
-	{
-		this.eventHandle.OnRaise -= this.Raise;
-	}
+	private void OnEnable() => this.Add();
 
-	private void OnEnable()
+	private void OnDisable() => this.Remove();
+
+	private void Raise() => this.onRaise.Invoke();
+
+	private void Add()
 	{
-		if (this.eventHandle) {
+		if (this.eventHandle && this.added == false) {
 			this.eventHandle.OnRaise += this.Raise;
+			this.added = true;
 		}
 	}
 
-	private void Raise() => this.onRaise.Invoke();
+	private void Remove()
+	{
+		if (this.added) {
+			this.eventHandle.OnRaise -= this.Raise;
+			this.added = false;
+		}
+	}
 }
