@@ -37,5 +37,29 @@ namespace Tests
 
 			Assert.AreEqual(1, called);
 		}
+
+		[UnityTest]
+		public IEnumerator NoOnRaiseOnInactiveGameObject()
+		{
+			var called = 0;
+			var eventListenerCtrl = new GameObject("listener")
+				.AddComponent<EventListenerControler>();
+			var eventHandle = ScriptableObject.CreateInstance<EventHandle>();
+			eventListenerCtrl.eventHandle = eventHandle;
+
+			yield return new WaitForEndOfFrame();
+
+			eventListenerCtrl.onRaise.AddListener(() => ++called);
+
+			yield return new WaitForEndOfFrame();
+
+			eventListenerCtrl.gameObject.SetActive(false);
+
+			yield return new WaitForEndOfFrame();
+
+			eventHandle.Raise();
+
+			Assert.AreEqual(0, called);
+		}
 	}
 }

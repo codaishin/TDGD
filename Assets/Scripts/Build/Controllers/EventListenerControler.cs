@@ -10,6 +10,13 @@ public class EventListenerControler : MonoBehaviour
 
 	private void Start()
 	{
-		this.eventHandle.OnRaise += this.onRaise.Invoke;
+		this.eventHandle.OnRaise += this.Raise;
+	}
+
+	private void Raise()
+	{
+		if (this.gameObject.activeSelf) {
+			this.onRaise.Invoke();
+		}
 	}
 }
