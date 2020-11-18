@@ -102,5 +102,33 @@ namespace Tests
 
 			Assert.DoesNotThrow(() => eventHandle.Raise());
 		}
+
+		[UnityTest]
+		public IEnumerator OnRaiseAfterReenable()
+		{
+			var called = 0;
+			var eventListenerCtrl = new GameObject("listener")
+				.AddComponent<EventListenerControler>();
+			var eventHandle = ScriptableObject.CreateInstance<EventHandle>();
+			eventListenerCtrl.eventHandle = eventHandle;
+
+			yield return new WaitForEndOfFrame();
+
+			eventListenerCtrl.onRaise.AddListener(() => ++called);
+
+			yield return new WaitForEndOfFrame();
+
+			eventListenerCtrl.enabled = false;
+
+			yield return new WaitForEndOfFrame();
+
+			eventListenerCtrl.enabled = true;
+
+			yield return new WaitForEndOfFrame();
+
+			eventHandle.Raise();
+
+			Assert.AreEqual(1, called);
+		}
 	}
 }
