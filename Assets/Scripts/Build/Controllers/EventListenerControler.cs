@@ -10,18 +10,20 @@ public class EventListenerControler : MonoBehaviour
 
 	private void Start()
 	{
-		this.eventHandle.OnRaise += this.onRaise.Invoke;
+		this.eventHandle.OnRaise += this.Raise;
 	}
 
 	private void OnDisable()
 	{
-		this.eventHandle.OnRaise -= this.onRaise.Invoke;
+		this.eventHandle.OnRaise -= this.Raise;
 	}
 
 	private void OnEnable()
 	{
 		if (this.eventHandle) {
-			this.eventHandle.OnRaise += this.onRaise.Invoke;
+			this.eventHandle.OnRaise += this.Raise;
 		}
 	}
+
+	private void Raise() => this.onRaise.Invoke();
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.TestTools;
 
 namespace Tests
@@ -129,6 +130,24 @@ namespace Tests
 			eventHandle.Raise();
 
 			Assert.AreEqual(1, called);
+		}
+
+		[UnityTest]
+		public IEnumerator OnRaiseAfterUnityEventReinitialization()
+		{
+			var called = 0;
+			var eventListenerCtrl = new GameObject("listener")
+				.AddComponent<EventListenerControler>();
+			var eventHandle = ScriptableObject.CreateInstance<EventHandle>();
+			eventListenerCtrl.eventHandle = eventHandle;
+
+			yield return new WaitForEndOfFrame();
+
+			eventListenerCtrl.onRaise.AddListener(() => ++called);
+			eventListenerCtrl.onRaise = new UnityEvent();
+			eventHandle.Raise();
+
+			Assert.AreEqual(0, called);
 		}
 	}
 }
