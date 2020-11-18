@@ -15,7 +15,7 @@ public class EventListenerControler : MonoBehaviour
 
 	private void Raise()
 	{
-		if (this.gameObject.activeSelf) {
+		if (this.gameObject.activeSelf && this.enabled) {
 			this.onRaise.Invoke();
 		}
 	}
