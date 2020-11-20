@@ -12,8 +12,7 @@ namespace Tests
 		public void GameObject()
 		{
 			var obj = new GameObject("obj");
-			var wrapper = new GameObjectWrapper();
-			wrapper.gameObject = obj;
+			var wrapper = new GameObjectWrapper(obj, null);
 
 			Assert.AreSame(obj, wrapper.GameObject);
 		}
@@ -23,9 +22,8 @@ namespace Tests
 		{
 			var obj = new GameObject("obj");
 			var handle = ScriptableObject.CreateInstance<GameObjectHandle>();
-			var wrapper = new GameObjectWrapper();
+			var wrapper = new GameObjectWrapper(null, handle);
 			handle.GameObject = obj;
-			wrapper.handle = handle;
 
 			Assert.AreSame(obj, wrapper.GameObject);
 		}
@@ -35,10 +33,8 @@ namespace Tests
 		{
 			var obj = new GameObject("obj");
 			var handle = ScriptableObject.CreateInstance<GameObjectHandle>();
-			var wrapper = new GameObjectWrapper();
+			var wrapper = new GameObjectWrapper(obj, handle);
 			handle.GameObject = obj;
-			wrapper.handle = handle;
-			wrapper.gameObject = obj;
 
 			Assert.Throws<System.ArgumentException>(() => {
 				var _ = wrapper.GameObject;
@@ -50,10 +46,8 @@ namespace Tests
 		{
 			var obj = new GameObject("obj");
 			var handle = ScriptableObject.CreateInstance<GameObjectHandle>();
-			var wrapper = new GameObjectWrapper();
+			var wrapper = new GameObjectWrapper(obj, handle);
 			handle.GameObject = obj;
-			wrapper.handle = handle;
-			wrapper.gameObject = obj;
 
 			try {
 				var _ = wrapper.GameObject;

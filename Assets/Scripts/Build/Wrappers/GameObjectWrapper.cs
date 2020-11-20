@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public struct GameObjectWrapper
 {
 	private static readonly string msg
 		= "GameObjectWrapper has gameObject and handler assigned, only assign one";
 
-	public GameObject gameObject;
-
-	public GameObjectHandle handle;
+	[SerializeField] private GameObject gameObject;
+	[SerializeField] private GameObjectHandle handle;
 
 	public GameObject GameObject {
 		get {
@@ -18,5 +18,11 @@ public struct GameObjectWrapper
 			if (this.gameObject) throw new ArgumentException(GameObjectWrapper.msg);
 			return this.handle.GameObject;
 		}
+	}
+
+	public GameObjectWrapper(in GameObject gameObject, in GameObjectHandle handle)
+	{
+		this.gameObject = gameObject;
+		this.handle = handle;
 	}
 }
