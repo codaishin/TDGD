@@ -29,5 +29,40 @@ namespace Tests
 
 			Assert.AreSame(obj, wrapper.GameObject);
 		}
+
+		[Test]
+		public void GameObjectHandleConflict()
+		{
+			var obj = new GameObject("obj");
+			var handle = ScriptableObject.CreateInstance<GameObjectHandle>();
+			var wrapper = new GameObjectWrapper();
+			handle.GameObject = obj;
+			wrapper.handle = handle;
+			wrapper.gameObject = obj;
+
+			Assert.Throws<System.ArgumentException>(() => {
+				var _ = wrapper.GameObject;
+			});
+		}
+
+		[Test]
+		public void GameObjectHandleConflictMessage()
+		{
+			var obj = new GameObject("obj");
+			var handle = ScriptableObject.CreateInstance<GameObjectHandle>();
+			var wrapper = new GameObjectWrapper();
+			handle.GameObject = obj;
+			wrapper.handle = handle;
+			wrapper.gameObject = obj;
+
+			try {
+				var _ = wrapper.GameObject;
+			} catch (System.ArgumentException e) {
+				string msg =
+					"GameObjectWrapper has gameObject and handler assigned, " +
+					"only assign one";
+				Assert.AreEqual(msg, e.Message);
+			}
+		}
 	}
 }
