@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class GameObjectHandle : ScriptableObject
 {
-
+	public GameObject GameObject { get; set; }
 }
