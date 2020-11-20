@@ -13,14 +13,14 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObject("target");
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
 			translationCtrl.vector = new Vector3(0, 1, 0);
 
 			translationCtrl.Translate();
 
 			TestTools.AssertAreEqual(
 				new Vector3(0, 1, 0),
-				translationCtrl.target.transform.position
+				translationCtrl.target.GameObject.transform.position
 			);
 		}
 
@@ -29,15 +29,15 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObject("target");
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
 			translationCtrl.vector = new Vector3(0, 1, 0);
-			translationCtrl.target.transform.position = new Vector3(1, 2, 3);
+			translationCtrl.target.GameObject.transform.position = new Vector3(1, 2, 3);
 
 			translationCtrl.Translate();
 
 			TestTools.AssertAreEqual(
 				new Vector3(1, 3, 3),
-				translationCtrl.target.transform.position
+				translationCtrl.target.GameObject.transform.position
 			);
 		}
 
@@ -46,14 +46,14 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObject("target");
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
 			translationCtrl.vector = Vector3.forward;
 
 			translationCtrl.Translate();
 
 			TestTools.AssertAreEqual(
 				Vector3.forward,
-				translationCtrl.target.transform.position
+				translationCtrl.target.GameObject.transform.position
 			);
 		}
 
@@ -62,16 +62,16 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObject("target");
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
 			translationCtrl.vector = Vector3.forward;
 
-			translationCtrl.target.transform.LookAt(Vector3.up);
+			translationCtrl.target.GameObject.transform.LookAt(Vector3.up);
 
 			translationCtrl.Translate();
 
 			TestTools.AssertAreEqual(
 				Vector3.up,
-				translationCtrl.target.transform.position
+				translationCtrl.target.GameObject.transform.position
 			);
 		}
 
@@ -80,14 +80,14 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObject("target");
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
 			translationCtrl.vector = Vector3.forward;
 
 			translationCtrl.Translate(0.5f);
 
 			TestTools.AssertAreEqual(
 				Vector3.forward / 2,
-				translationCtrl.target.transform.position
+				translationCtrl.target.GameObject.transform.position
 			);
 		}
 
@@ -97,14 +97,14 @@ namespace Tests
 			var delta = Time.deltaTime;
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObject("target");
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
 			translationCtrl.vector = Vector3.forward;
 
 			translationCtrl.TranslateDelta();
 
 			TestTools.AssertAreEqual(
 				Vector3.forward * delta,
-				translationCtrl.target.transform.position
+				translationCtrl.target.GameObject.transform.position
 			);
 
 			yield break;
@@ -116,14 +116,14 @@ namespace Tests
 			var delta = Time.fixedDeltaTime;
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObject("target");
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
 			translationCtrl.vector = Vector3.forward;
 
 			translationCtrl.TranslateFixedDelta();
 
 			TestTools.AssertAreEqual(
 				Vector3.forward * delta,
-				translationCtrl.target.transform.position
+				translationCtrl.target.GameObject.transform.position
 			);
 
 			yield break;

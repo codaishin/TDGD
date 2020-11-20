@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TranslationControler : MonoBehaviour
 {
-	public GameObject target;
+	public GameObjectWrapper target;
 	public Vector3 vector;
 
 	public void Translate() => this.Translate(1f);
@@ -15,6 +15,6 @@ public class TranslationControler : MonoBehaviour
 
 	public void Translate(float scale)
 	{
-		this.target.transform.Translate(this.vector * scale);
+		this.target.GameObject.transform.Translate(this.vector * scale);
 	}
 }
