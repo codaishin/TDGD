@@ -13,7 +13,7 @@ namespace Tests
 		{
 			var camCtrl = new GameObject("camera").AddComponent<CameraControler>();
 			var target = new GameObject("target");
-			camCtrl.target = target;
+			camCtrl.target = new GameObjectWrapper(target, null);
 
 			yield return new WaitForEndOfFrame();
 
@@ -32,7 +32,7 @@ namespace Tests
 		{
 			var camCtrl = new GameObject("camera").AddComponent<CameraControler>();
 			var target = new GameObject("target");
-			camCtrl.target = target;
+			camCtrl.target = new GameObjectWrapper(target, null);
 
 			yield return new WaitForEndOfFrame();
 

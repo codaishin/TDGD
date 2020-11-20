@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraControler : MonoBehaviour
 {
-	public GameObject target;
+	public GameObjectWrapper target;
 	public Vector3 offsetVector;
 
 	private void Update()
@@ -16,19 +16,19 @@ public class CameraControler : MonoBehaviour
 	private void UpdateOffsetVector()
 	{
 		this.transform.position =
-			this.target.transform.position +
+			this.target.GameObject.transform.position +
 			this.offsetVector;
 	}
 
 	private void UpdateLookRotation()
 	{
-		this.transform.LookAt(this.target.transform);
+		this.transform.LookAt(this.target.GameObject.transform);
 	}
 
 	public void SetOffsetFromCurrentPosition()
 	{
 		this.offsetVector =
 			this.transform.position -
-			this.target.transform.position;
+			this.target.GameObject.transform.position;
 	}
 }
