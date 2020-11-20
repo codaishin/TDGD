@@ -14,6 +14,21 @@ public class GameObjectWrapperDrawer : PropertyDrawer
 		return (true, true);
 	}
 
+	private static void Draw(in Rect position,
+	                         in SerializedProperty property,
+	                         in bool state,
+	                         out Rect newPosition)
+	{
+		GUI.enabled = state;
+		EditorGUI.PropertyField(position, property, GUIContent.none, true);
+		newPosition = new Rect(
+			position.x,
+			position.y + position.height / 2,
+			position.width,
+			position.height
+		);
+	}
+
 	public override
 	float GetPropertyHeight(SerializedProperty property, GUIContent label)
 	{
@@ -21,18 +36,15 @@ public class GameObjectWrapperDrawer : PropertyDrawer
 	}
 
 	public override
-	void OnGUI(Rect pos, SerializedProperty property, GUIContent label)
+	void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 	{
 		SerializedProperty obj = property.FindPropertyRelative("gameObject");
-		SerializedProperty handle = property.FindPropertyRelative("handle");
-		(bool sObj, bool sHandle) = GameObjectWrapperDrawer.State(obj, handle);
+		SerializedProperty hnd = property.FindPropertyRelative("handle");
+		(bool stObj, bool stHnd) = GameObjectWrapperDrawer.State(obj, hnd);
 
-		pos = EditorGUI.PrefixLabel(pos, label);
-		GUI.enabled = sObj;
-		EditorGUI.PropertyField(pos, obj, GUIContent.none, true);
-		pos = new Rect(pos.x, pos.y + pos.height / 2, pos.width, pos.height);
-		GUI.enabled = sHandle;
-		EditorGUI.PropertyField(pos, handle, GUIContent.none, true);
+		position = EditorGUI.PrefixLabel(position, label);
+		GameObjectWrapperDrawer.Draw(position, obj, stObj, out position);
+		GameObjectWrapperDrawer.Draw(position, hnd, stHnd, out _);
 		GUI.enabled = true;
 	}
 }
