@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class GameObjectHandleSetControler : MonoBehaviour
 {
+	public GameObjectHandle handle;
 
+	private void Start()
+	{
+		this.handle.GameObject = this.gameObject;
+	}
 }
