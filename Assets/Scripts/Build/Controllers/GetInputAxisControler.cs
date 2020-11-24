@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [Serializable]
 public class FloatEvent : UnityEvent<float> {}
 
-public abstract class BaseAxisControler : MonoBehaviour
+public abstract class GetAxisControler : MonoBehaviour
 {
 	public string axis;
 	public bool invert;
@@ -23,7 +23,7 @@ public abstract class BaseAxisControler : MonoBehaviour
 	}
 }
 
-public class AxisControler : BaseAxisControler
+public class GetInputAxisControler : GetAxisControler
 {
 	protected override float GetAxis(in string name) => Input.GetAxis(name);
 }
