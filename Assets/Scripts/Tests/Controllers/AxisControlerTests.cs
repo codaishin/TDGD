@@ -39,6 +39,7 @@ namespace Tests
 			Assert.AreEqual(0.3f, called);
 		}
 
+
 		[Test]
 		public void ApplyAlternative()
 		{
@@ -54,6 +55,40 @@ namespace Tests
 			axisCtrl.Apply();
 
 			Assert.AreEqual(0.7f, called);
+		}
+
+		[Test]
+		public void ApplyInvert()
+		{
+			var called = 0f;
+			var axisCtrl = new GameObject("axis").AddComponent<AxisMock>();
+			axisCtrl.axisValues = new Dictionary<string, float> {
+				{ "vertical", 0.3f },
+			};
+			axisCtrl.onApply.AddListener(v => called = v);
+			axisCtrl.axis = "vertical";
+			axisCtrl.invert = true;
+
+			axisCtrl.Apply();
+
+			Assert.AreEqual(-0.3f, called);
+		}
+
+		[Test]
+		public void ApplyMultiply()
+		{
+			var called = 0f;
+			var axisCtrl = new GameObject("axis").AddComponent<AxisMock>();
+			axisCtrl.axisValues = new Dictionary<string, float> {
+				{ "vertical", 0.3f },
+			};
+			axisCtrl.onApply.AddListener(v => called = v);
+			axisCtrl.axis = "vertical";
+			axisCtrl.factor = 10;
+
+			axisCtrl.Apply();
+
+			Assert.AreEqual(3, called);
 		}
 	}
 }

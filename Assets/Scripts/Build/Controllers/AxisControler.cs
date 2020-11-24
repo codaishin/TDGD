@@ -10,11 +10,17 @@ public class FloatEvent : UnityEvent<float> {}
 public abstract class BaseAxisControler : MonoBehaviour
 {
 	public string axis;
+	public bool invert;
+	public float factor = 1f;
 	public FloatEvent onApply = new FloatEvent();
 
 	protected abstract float GetAxis(in string name);
 
-	public void Apply() => this.onApply.Invoke(this.GetAxis(this.axis));
+	public void Apply()
+	{
+		float value = this.GetAxis(this.axis) * this.factor;
+		this.onApply.Invoke(this.invert ? -value : value);
+	}
 }
 
 public class AxisControler : BaseAxisControler
