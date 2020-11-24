@@ -23,5 +23,22 @@ namespace Tests
 				rotCtrl.transform.position
 			);
 		}
+
+		[Test]
+		public void RotateVertically()
+		{
+			var rotCtrl = new GameObject("rotater").AddComponent<RotationControler>();
+			var around = new GameObject("around");
+
+			rotCtrl.transform.position = Vector3.right;
+			rotCtrl.axis = Vector3.forward;
+			rotCtrl.around = new GameObjectWrapper(around);
+			rotCtrl.Rotate(90);
+
+			TestTools.AssertAreEqual(
+				Vector3.up,
+				rotCtrl.transform.position
+			);
+		}
 	}
 }
