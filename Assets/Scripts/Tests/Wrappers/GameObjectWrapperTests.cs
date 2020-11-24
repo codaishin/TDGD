@@ -12,7 +12,7 @@ namespace Tests
 		public void GameObject()
 		{
 			var obj = new GameObject("obj");
-			var wrapper = new GameObjectWrapper(obj, null);
+			var wrapper = new GameObjectWrapper(obj);
 
 			Assert.AreSame(obj, wrapper.GameObject);
 		}
@@ -22,7 +22,7 @@ namespace Tests
 		{
 			var obj = new GameObject("obj");
 			var handle = ScriptableObject.CreateInstance<GameObjectHandle>();
-			var wrapper = new GameObjectWrapper(null, handle);
+			var wrapper = new GameObjectWrapper(handle);
 			handle.GameObject = obj;
 
 			Assert.AreSame(obj, wrapper.GameObject);
