@@ -6,9 +6,9 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-	public class AxisControlerTests :  TestTools.BaseTestClass
+	public class GetInputAxisControlerTests :  TestTools.BaseTestClass
 	{
-		private class AxisMock : BaseAxisControler
+		private class AxisMock : GetAxisControler
 		{
 			public Dictionary<string, float> axisValues;
 
