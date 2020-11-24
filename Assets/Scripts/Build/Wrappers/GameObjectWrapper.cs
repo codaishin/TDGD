@@ -26,7 +26,7 @@ public struct GameObjectWrapper
 		this.handle = handle;
 	}
 
-	public GameObjectWrapper(in GameObject gameObject) : this(gameObject, null)	{}
+	public GameObjectWrapper(in GameObject gameObject) : this(gameObject, null) {}
 
 	public GameObjectWrapper(in GameObjectHandle handle) : this(null, handle) {}
 }
