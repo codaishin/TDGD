@@ -57,5 +57,23 @@ namespace Tests
 				rotCtrl.transform.position
 			);
 		}
+
+		[Test]
+		public void RotateGlobal()
+		{
+			var rotCtrl = new GameObject("rotater").AddComponent<RotationControler>();
+			var around = new GameObject("around");
+
+			rotCtrl.transform.position = Vector3.back;
+			rotCtrl.transform.LookAt(Vector3.up);
+			rotCtrl.around = new GameObjectWrapper(around);
+			rotCtrl.space = Space.World;
+			rotCtrl.Rotate(90);
+
+			TestTools.AssertAreEqual(
+				Vector3.left,
+				rotCtrl.transform.position
+			);
+		}
 	}
 }
