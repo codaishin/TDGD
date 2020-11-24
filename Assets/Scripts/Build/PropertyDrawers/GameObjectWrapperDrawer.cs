@@ -17,10 +17,11 @@ public class GameObjectWrapperDrawer : PropertyDrawer
 	private static void Draw(in Rect position,
 	                         in SerializedProperty property,
 	                         in bool state,
+	                         in GUIContent label,
 	                         out Rect newPosition)
 	{
 		GUI.enabled = state;
-		EditorGUI.PropertyField(position, property, GUIContent.none, true);
+		EditorGUI.PropertyField(position, property, label, true);
 		newPosition = new Rect(
 			position.x,
 			position.y + position.height / 2,
@@ -40,11 +41,12 @@ public class GameObjectWrapperDrawer : PropertyDrawer
 	{
 		SerializedProperty obj = property.FindPropertyRelative("gameObject");
 		SerializedProperty hnd = property.FindPropertyRelative("handle");
+		GUIContent lblObj = new GUIContent($"{label.text} Game Object");
+		GUIContent lblHnd = new GUIContent($"{label.text} Handle");
 		(bool stObj, bool stHnd) = GameObjectWrapperDrawer.State(obj, hnd);
 
-		position = EditorGUI.PrefixLabel(position, label);
-		GameObjectWrapperDrawer.Draw(position, obj, stObj, out position);
-		GameObjectWrapperDrawer.Draw(position, hnd, stHnd, out _);
+		GameObjectWrapperDrawer.Draw(position, obj, stObj, lblObj, out position);
+		GameObjectWrapperDrawer.Draw(position, hnd, stHnd, lblHnd, out _);
 		GUI.enabled = true;
 	}
 }
