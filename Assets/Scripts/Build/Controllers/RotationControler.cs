@@ -11,7 +11,7 @@ public class RotationControler : MonoBehaviour
 	{
 		this.transform.RotateAround(
 			this.around.GameObject.transform.position,
-			this.axis,
+			this.transform.rotation * this.axis,
 			degrees
 		);
 	}
