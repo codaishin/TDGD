@@ -13,7 +13,7 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"));
 			translationCtrl.vector = new Vector3(0, 1, 0);
 
 			translationCtrl.Translate();
@@ -29,7 +29,7 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"));
 			translationCtrl.vector = new Vector3(0, 1, 0);
 			translationCtrl.target.GameObject.transform.position = new Vector3(1, 2, 3);
 
@@ -46,7 +46,7 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"));
 			translationCtrl.vector = Vector3.forward;
 
 			translationCtrl.Translate();
@@ -62,7 +62,7 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"));
 			translationCtrl.vector = Vector3.forward;
 
 			translationCtrl.target.GameObject.transform.LookAt(Vector3.up);
@@ -80,7 +80,7 @@ namespace Tests
 		{
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"));
 			translationCtrl.vector = Vector3.forward;
 
 			translationCtrl.Translate(0.5f);
@@ -97,7 +97,7 @@ namespace Tests
 			var delta = Time.deltaTime;
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"));
 			translationCtrl.vector = Vector3.forward;
 
 			translationCtrl.TranslateDelta();
@@ -116,7 +116,7 @@ namespace Tests
 			var delta = Time.fixedDeltaTime;
 			var translationCtrl = new GameObject("obj")
 				.AddComponent<TranslationControler>();
-			translationCtrl.target = new GameObjectWrapper(new GameObject("target"), null);
+			translationCtrl.target = new GameObjectWrapper(new GameObject("target"));
 			translationCtrl.vector = Vector3.forward;
 
 			translationCtrl.TranslateFixedDelta();
