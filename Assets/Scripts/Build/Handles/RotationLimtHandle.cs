@@ -26,3 +26,12 @@ public class RotationStaticLimitHandle : RotationLimtHandle
 		return angle;
 	}
 }
+
+public class RotationNoLimitHandle : RotationLimtHandle
+{
+	public override
+	float Limit(in float angle, in Vector3 _, in Vector3 __)
+	{
+		return angle;
+	}
+}
