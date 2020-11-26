@@ -72,16 +72,5 @@ namespace Tests
 
 			Assert.AreEqual(-25, rotation);
 		}
-
-		[Test]
-		public void Unlimited()
-		{
-			var limitHandle = ScriptableObject
-				.CreateInstance<RotationNoLimitHandle>();
-
-			var rotation = limitHandle.Limit(45, Vector3.forward, Vector3.right);
-
-			Assert.AreEqual(45, rotation);
-		}
 	}
 }
