@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class RotationLimtHandle : ScriptableObject
+public abstract class RotationLimitHandle : ScriptableObject
 {
 	public abstract
 	float Limit(in float angle, in Vector3 offset, in Vector3 axis);
 }
 
-public class RotationStaticLimitHandle : RotationLimtHandle
+[CreateAssetMenu(menuName = "ScriptableObjects/RotationStaticLimitHandle")]
+public class RotationStaticLimitHandle : RotationLimitHandle
 {
 	public Vector3 levelPlaneNormal;
 	public float max;

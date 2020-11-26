@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-	public class RotationLimitHandleTests : TestTools.BaseTestClass
+	public class RotationStaticLimitHandleTests : TestTools.BaseTestClass
 	{
 		[Test]
 		public void Limit()
