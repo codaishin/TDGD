@@ -14,18 +14,20 @@ public class RotationControler : MonoBehaviour
 		? this.target.GameObject.transform.rotation * this.axis
 		: this.axis;
 
+	private Vector3 Offset =>
+		around.GameObject.transform.position -
+		target.GameObject.transform.position;
+
+	private Vector3 AroundPosition =>
+		this.around.GameObject.transform.position;
+
 	public void Rotate(float degrees)
 	{
+		Vector3 axis = this.Axis;
 		if (this.limiter) {
-			Vector3 offset =
-				around.GameObject.transform.position -
-				target.GameObject.transform.position;
-			degrees = limiter.Limit(degrees, offset, this.Axis);
+			degrees = limiter.Limit(degrees, this.Offset, axis);
 		}
-		this.target.GameObject.transform.RotateAround(
-			this.around.GameObject.transform.position,
-			this.Axis,
-			degrees
-		);
+		this.target.GameObject.transform
+			.RotateAround(this.AroundPosition, axis, degrees);
 	}
 }
