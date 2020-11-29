@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class CursorHandle : ScriptableObject
 {
-
+	public void SetVisibility(bool value) => Cursor.visible = value;
 }

@@ -8,6 +8,14 @@ namespace Tests
 {
 	public class CursorHandleTests : TestTools.BaseTestClass
 	{
+		[Test]
+		public void Hide()
+		{
+			var cursorHandle = ScriptableObject.CreateInstance<CursorHandle>();
 
+			cursorHandle.SetVisibility(false);
+
+			Assert.False(Cursor.visible);
+		}
 	}
 }
