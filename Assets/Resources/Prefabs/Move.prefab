@@ -1,5 +1,144 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1664680522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664680523}
+  - component: {fileID: 1664680524}
+  m_Layer: 0
+  m_Name: Look
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1664680523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664680522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5396362660499373632}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664680524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664680522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6321d529ab9f20429da6a9325fcdf02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target:
+    gameObject: {fileID: 0}
+    handle: {fileID: 11400000, guid: 0db0bb26b04f92341ae4c42a55ec2940, type: 2}
+  lookAt:
+    gameObject: {fileID: 0}
+    handle: {fileID: 11400000, guid: 1950839eddb38654a846e82dfd3c015c, type: 2}
+  invert: 1
+  restrictionPlaneNormal: {x: 0, y: 1, z: 0}
+--- !u!1 &2909765679382331018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 886443953422084492}
+  - component: {fileID: 1856217540605702424}
+  - component: {fileID: 6578918273983252988}
+  m_Layer: 0
+  m_Name: Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &886443953422084492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909765679382331018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5396362660499373632}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1856217540605702424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909765679382331018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910a404cf8b76124398a0718d4cc745c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target:
+    gameObject: {fileID: 0}
+    handle: {fileID: 11400000, guid: 0db0bb26b04f92341ae4c42a55ec2940, type: 2}
+  vector: {x: -1, y: 0, z: 0}
+--- !u!114 &6578918273983252988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909765679382331018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1355cdfcb3f7641bb7d1b4a1f75b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventHandle: {fileID: 11400000, guid: a67e14a941c4f1f4d8a66635ba70475b, type: 2}
+  onRaise:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1664680524}
+        m_TargetAssemblyTypeName: LookAtControler, Build
+        m_MethodName: Apply
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1856217540605702424}
+        m_TargetAssemblyTypeName: TranslationControler, Build
+        m_MethodName: TranslateFixedDelta
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5396362660428874199
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +203,18 @@ MonoBehaviour:
   onRaise:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1664680524}
+        m_TargetAssemblyTypeName: LookAtControler, Build
+        m_MethodName: Apply
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 5396362660428874197}
         m_TargetAssemblyTypeName: TranslationControler, Build
         m_MethodName: TranslateFixedDelta
@@ -104,13 +255,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5396362660428874198}
-  - {fileID: 5396362660805654747}
-  - {fileID: 5396362661302861237}
-  - {fileID: 5396362661033234761}
+  - {fileID: 33159847418135226}
+  - {fileID: 2095974843496265946}
+  - {fileID: 886443953422084492}
+  - {fileID: 1664680523}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5396362660805654748
+--- !u!1 &8106101083729462637
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,9 +270,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5396362660805654747}
-  - component: {fileID: 5396362660805654745}
-  - component: {fileID: 5396362660805654746}
+  - component: {fileID: 33159847418135226}
+  - component: {fileID: 2012572214445131833}
+  - component: {fileID: 4070308729945153118}
   m_Layer: 0
   m_Name: Backward
   m_TagString: Untagged
@@ -128,13 +280,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5396362660805654747
+--- !u!4 &33159847418135226
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396362660805654748}
+  m_GameObject: {fileID: 8106101083729462637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -142,13 +294,13 @@ Transform:
   m_Father: {fileID: 5396362660499373632}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5396362660805654745
+--- !u!114 &2012572214445131833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396362660805654748}
+  m_GameObject: {fileID: 8106101083729462637}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910a404cf8b76124398a0718d4cc745c, type: 3}
@@ -158,13 +310,13 @@ MonoBehaviour:
     gameObject: {fileID: 0}
     handle: {fileID: 11400000, guid: 0db0bb26b04f92341ae4c42a55ec2940, type: 2}
   vector: {x: 0, y: 0, z: -1}
---- !u!114 &5396362660805654746
+--- !u!114 &4070308729945153118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396362660805654748}
+  m_GameObject: {fileID: 8106101083729462637}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb1355cdfcb3f7641bb7d1b4a1f75b59, type: 3}
@@ -174,7 +326,19 @@ MonoBehaviour:
   onRaise:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5396362660805654745}
+      - m_Target: {fileID: 1664680524}
+        m_TargetAssemblyTypeName: LookAtControler, Build
+        m_MethodName: Apply
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2012572214445131833}
         m_TargetAssemblyTypeName: TranslationControler, Build
         m_MethodName: TranslateFixedDelta
         m_Mode: 1
@@ -186,7 +350,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &5396362661033234762
+--- !u!1 &8846990223716894925
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,85 +358,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5396362661033234761}
-  - component: {fileID: 5396362661033234759}
-  - component: {fileID: 5396362661033234760}
-  m_Layer: 0
-  m_Name: Left
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5396362661033234761
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396362661033234762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5396362660499373632}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5396362661033234759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396362661033234762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 910a404cf8b76124398a0718d4cc745c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target:
-    gameObject: {fileID: 0}
-    handle: {fileID: 11400000, guid: 0db0bb26b04f92341ae4c42a55ec2940, type: 2}
-  vector: {x: -1, y: 0, z: 0}
---- !u!114 &5396362661033234760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396362661033234762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1355cdfcb3f7641bb7d1b4a1f75b59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventHandle: {fileID: 11400000, guid: a67e14a941c4f1f4d8a66635ba70475b, type: 2}
-  onRaise:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5396362661033234759}
-        m_TargetAssemblyTypeName: TranslationControler, Build
-        m_MethodName: TranslateFixedDelta
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!1 &5396362661302861238
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5396362661302861237}
-  - component: {fileID: 5396362661302861235}
-  - component: {fileID: 5396362661302861236}
+  - component: {fileID: 2095974843496265946}
+  - component: {fileID: 2891458037519260074}
+  - component: {fileID: 6287270265737090532}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -280,13 +368,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5396362661302861237
+--- !u!4 &2095974843496265946
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396362661302861238}
+  m_GameObject: {fileID: 8846990223716894925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -294,13 +382,13 @@ Transform:
   m_Father: {fileID: 5396362660499373632}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5396362661302861235
+--- !u!114 &2891458037519260074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396362661302861238}
+  m_GameObject: {fileID: 8846990223716894925}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910a404cf8b76124398a0718d4cc745c, type: 3}
@@ -310,13 +398,13 @@ MonoBehaviour:
     gameObject: {fileID: 0}
     handle: {fileID: 11400000, guid: 0db0bb26b04f92341ae4c42a55ec2940, type: 2}
   vector: {x: 1, y: 0, z: 0}
---- !u!114 &5396362661302861236
+--- !u!114 &6287270265737090532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396362661302861238}
+  m_GameObject: {fileID: 8846990223716894925}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb1355cdfcb3f7641bb7d1b4a1f75b59, type: 3}
@@ -326,7 +414,19 @@ MonoBehaviour:
   onRaise:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5396362661302861235}
+      - m_Target: {fileID: 1664680524}
+        m_TargetAssemblyTypeName: LookAtControler, Build
+        m_MethodName: Apply
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2891458037519260074}
         m_TargetAssemblyTypeName: TranslationControler, Build
         m_MethodName: TranslateFixedDelta
         m_Mode: 1
