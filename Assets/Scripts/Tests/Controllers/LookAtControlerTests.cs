@@ -76,5 +76,28 @@ namespace Tests
 				target.transform.rotation.eulerAngles
 			);
 		}
+
+		[Test]
+		public void LookAtRestrictToPlane()
+		{
+			var target = new GameObject("target");
+			var lookAt = new GameObject("lookAt");
+			var lookCtrl = new GameObject("look").AddComponent<LookAtControler>();
+
+			lookAt.transform.position = Vector3.forward;
+
+			lookCtrl.target = new GameObjectWrapper(target);
+			lookCtrl.lookAt = new GameObjectWrapper(lookAt);
+			lookCtrl.restrictionPlaneNormal = new Vector3(0, 1, -1); // 45° upward rotated plane
+
+			lookCtrl.Apply();
+
+			var expected = Quaternion.LookRotation(new Vector3(0, 1, 1));
+
+			TestTools.AssertAreEqual(
+				expected.eulerAngles,
+				target.transform.rotation.eulerAngles
+			);
+		}
 	}
 }
