@@ -13,11 +13,23 @@ public class LookAtControler : MonoBehaviour
 	{
 		Vector3 targetPos = this.target.GameObject.transform.position;
 		Vector3 lookAtPos = this.lookAt.GameObject.transform.position;
-		Vector3 lookDir = lookAtPos - targetPos;
-		if (this.restrictionPlaneNormal != Vector3.zero) {
-			lookDir = Vector3.ProjectOnPlane(lookDir, this.restrictionPlaneNormal);
+		Vector3 lookDir = this.Invert(this.Restrict(lookAtPos - targetPos));
+		this.target.GameObject.transform.LookAt(targetPos + lookDir);
+	}
+
+	private Vector3 Invert(in Vector3 lookDirection)
+	{
+		if (this.invert) {
+			return -lookDirection;
 		}
-		this.target.GameObject.transform
-			.LookAt(this.invert ? targetPos - lookDir : targetPos + lookDir);
+		return lookDirection;
+	}
+
+	private Vector3 Restrict(in Vector3 lookDirection)
+	{
+		if (this.restrictionPlaneNormal != Vector3.zero) {
+			return Vector3.ProjectOnPlane(lookDirection, this.restrictionPlaneNormal);
+		}
+		return lookDirection;
 	}
 }
