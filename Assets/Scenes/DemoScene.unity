@@ -448,6 +448,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1cfd97036ccd6f4c9213af1f5b59a40, type: 3}
+--- !u!1001 &4132109769860296566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4132109768577673756, guid: c92149d64ef9074469a9e27bf376c3cf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132109768577673756, guid: c92149d64ef9074469a9e27bf376c3cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132109768577673756, guid: c92149d64ef9074469a9e27bf376c3cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132109768577673756, guid: c92149d64ef9074469a9e27bf376c3cf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132109768577673759, guid: c92149d64ef9074469a9e27bf376c3cf,
+        type: 3}
+      propertyPath: m_Name
+      value: Jump
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c92149d64ef9074469a9e27bf376c3cf, type: 3}
 --- !u!1001 &5396362661161817215
 PrefabInstance:
   m_ObjectHideFlags: 0
