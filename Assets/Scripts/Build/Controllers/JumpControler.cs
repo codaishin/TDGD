@@ -23,7 +23,10 @@ public class JumpControler : MonoBehaviour
 	public void Jump()
 	{
 		if (this.triggers.Any()) {
-			this.rb.velocity += this.direction.normalized * this.strength;
+			this.rb.velocity +=
+				this.rb.transform.rotation *
+				this.direction.normalized *
+				this.strength;
 		}
 	}
 }

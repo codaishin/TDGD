@@ -126,5 +126,28 @@ namespace Tests
 				targetRb.velocity
 			);
 		}
+
+		[UnityTest]
+		public IEnumerator JumpDirectionLocal()
+		{
+			var targetRb = new GameObject("target").AddComponent<Rigidbody>();
+			var jumpCtrl = new GameObject("jump").AddComponent<JumpControler>();
+			var triggerMock = new GameObject("triggers").AddComponent<TriggersMock>();
+
+			jumpCtrl.direction = Vector3.forward;
+			jumpCtrl.targetRigidbody = new GameObjectWrapper(targetRb.gameObject);
+			jumpCtrl.targetTriggers = new GameObjectWrapper(triggerMock.gameObject);
+			targetRb.useGravity = false;
+			targetRb.transform.LookAt(Vector3.up);
+
+			yield return new WaitForEndOfFrame(); // Start
+
+			triggerMock.colliders
+				.Add(new GameObject("collider").AddComponent<SphereCollider>());
+
+			jumpCtrl.Jump();
+
+			TestTools.AssertAreEqual(Vector3.up, targetRb.velocity);
+		}
 	}
 }
