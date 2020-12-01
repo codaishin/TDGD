@@ -11,6 +11,6 @@ public static class Extensions
 		throw new KeyNotFoundException($"\"{typeof(C)}\" not found on \"{obj.name}\"");
 	}
 
-	public static C AssertComponent<C>(this GameObjectHandle handle)
+	public static C AssertComponent<C>(this GameObjectWrapper handle)
 		=> handle.GameObject.AssertComponent<C>();
 }
